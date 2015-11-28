@@ -10,7 +10,7 @@ case class InvokeDynamic(biitstrapMethodAttrIndex: Integer, nameAndTypeIndex: In
 case class LongInfo(highBytes: Integer, LowBytes:Integer) extends CpInfo
 case class MethodHandleInfo(referenceKind: Byte, referenceIndex: Integer) extends CpInfo
 case class MethodRefInfo(classIndex: Integer, nameAndTypeIndex: Integer) extends CpInfo
-case class NameAndTypeInfe(nameIndex: Integer, descriptorIndex: Integer) extends CpInfo
+case class NameAndTypeInfo(nameIndex: Integer, descriptorIndex: Integer) extends CpInfo
 case class StringInfo(stringIndex: Integer) extends CpInfo
-case class Utf8Info(length: Integer, bytes: Array[Byte]) extends CpInfo
+case class Utf8Info(length: Integer, bytes: Seq[Byte]) extends CpInfo
 

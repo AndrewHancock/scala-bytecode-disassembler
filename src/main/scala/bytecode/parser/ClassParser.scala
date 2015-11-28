@@ -24,9 +24,12 @@ class ClassParser(inputStream: InputStream) {
       Right(new ClassFile(
           reader.short(),  //minor_version
           reader.short(),//  //major_version
-          constantParser.parse()
+          constantParser.parse(),
+          
           ))
       
   }
+  
+  
   
 }

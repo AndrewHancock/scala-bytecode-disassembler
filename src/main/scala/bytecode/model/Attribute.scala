@@ -22,6 +22,9 @@ case class LineNumberTable(attributeNameIndex: Integer, attributeLength: Long, l
 case class LocalVariable(startPc: Integer, length: Integer, nameIndex: Integer, descriptorIndex: Integer, index: Integer) 
 case class LocalVariableTable(attributeNameIndex: Integer, attributeLength: Long, localVariableTable: Array[LocalVariable])  extends Attribute
 case class Deprecated(attributeNameIndex: Integer, attributeLength: Long) extends Attribute
+case class RuntimeVisibileAnnotations(attributeNameIndex: Integer, attributeLength: Long, annotations: Array[Annotation]) extends Attribute
+case class RuntimeInisibileAnnotations(attributeNameIndex: Integer, attributeLength: Long, annotations: Array[Annotation]) extends Attribute
+case class RuntimeVisibleParameterAnnotations(attributeNameIndex: Integer, attributeLength: Long, parameterAnnotations: Array[Pair[Integer, Array[Annotation]]]) extends Attribute
+case class RuntimeInvisibleParameterAnnotations(attributeNameIndex: Integer, attributeLength: Long, parameterAnnotiations: Array[Pair[Integer, Array[Annotation]]]) extends Attribute
 
-case class Annotation(typeIndex: Integer, elementValuePairs: Array[Pair[Integer, Integer]])
-case class RuntimeVisibleAnnotations(attributeNameIndex: Integer, attributeLength: Long, annotations: Array[Annotation]) extends Attribute
+case class BootstrapMethods(attributeNameIndex: Integer, attributeLength: Long, bootstrapArguments: Array[BootstrapMethod])

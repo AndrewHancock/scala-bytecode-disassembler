@@ -12,8 +12,13 @@ object ClassFilePrinter {
     for(constant <- classFile.constantPool) {
       print(i + " ")
       i = i + 1
-      printConstant(constant)      
+      printConstant(constant)   
+      
     }
+    printAccessFlags(classFile.accessFlags)
+    println("this_class: " + classFile.thisClass)
+    println("super_class: " + classFile.superClass)
+    println("Interfaces: " + classFile.interfaces)
   }
   
   def printConstant(constant: CpInfo) = constant match{
@@ -26,6 +31,13 @@ object ClassFilePrinter {
   }
   
   private def utf8BytesToString(bytes: Seq[Byte]): String = new String(bytes.toArray, "UTF-8")
+  
+  def printAccessFlags(flags: Set[AccessFlag]) = {
+    println("Access flags:")
+    for(flag <- flags)
+      println("\t" + flag.toString())
+      
+  }
   
   
 }

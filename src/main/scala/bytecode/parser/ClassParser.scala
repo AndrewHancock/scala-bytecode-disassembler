@@ -1,8 +1,9 @@
 package bytecode.parser
 
-import java.io.InputStream;
+import java.io.InputStream
 import java.io.DataInputStream
-import bytecode.model.ClassFile
+import bytecode.model._
+
 
 case class FailResult(reason: String)
 
@@ -25,11 +26,29 @@ class ClassParser(inputStream: InputStream) {
           reader.short(),  //minor_version
           reader.short(),//  //major_version
           constantParser.parse(),
-          
+          parseAccessFlags(),
+          reader.short(), //this_class
+          reader.short(), //super_class,
+          for(x <- 0 until reader.short - 1)
+            yield reader.short()
           ))
       
   }
   
-  
+  def parseAccessFlags(): Set[AccessFlag] = {
+    val flags = reader.short;
+    val flagSet: Set[Pair[Int, AccessFlag]] = Set(
+        Pair(0x0001, AccessFlags.Public),
+        Pair(0x0010, AccessFlags.Final),
+        Pair(0x0020, AccessFlags.Super),
+        Pair(0x0200, AccessFlags.Interface),
+        Pair(0x0400, AccessFlags.Abstract),
+        Pair(0x1000, AccessFlags.Synthetic),
+        Pair(0x2000, AccessFlags.Annotation),
+        Pair(0x4000, AccessFlags.Enum))
+    
+        return for(flag <- flagSet if (flags & flag._1) != 0)          
+             yield flag._2            
+  }
   
 }

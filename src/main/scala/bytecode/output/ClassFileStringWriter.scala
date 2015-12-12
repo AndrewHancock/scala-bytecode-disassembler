@@ -19,6 +19,7 @@ object ClassFilePrinter {
     println("this_class: " + classFile.thisClass)
     println("super_class: " + classFile.superClass)
     println("Interfaces: " + classFile.interfaces)
+    println("Fields: " + classFile.fields)
   }
   
   def printConstant(constant: CpInfo) = constant match{
@@ -37,6 +38,10 @@ object ClassFilePrinter {
     for(flag <- flags)
       println("\t" + flag.toString())
       
+  }
+  
+  def printAttributes(attributes: Seq[Attribute]) = {
+    println(attributes)
   }
   
   

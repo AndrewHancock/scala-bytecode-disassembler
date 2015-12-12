@@ -8,7 +8,8 @@ case class ClassFile(
     accessFlags: Set[AccessFlag]    ,
     thisClass: Int,
     superClass: Int,
-    interfaces: Seq[Int]
+    interfaces: Seq[Int],
+    fields: Seq[Field]
     ){
     
 }

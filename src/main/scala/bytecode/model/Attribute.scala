@@ -1,10 +1,9 @@
 package bytecode.model
 
-abstract class Attribute {
-  def attributeNameIndex: Integer
-  def attributeLength: Long
-}
+class Attribute(attributeNameIndex: Integer, attributeLength: Long) {
 
+}
+/*
 case class Code(attributeNameIndex: Integer, attributeLength: Long, maxStack: Integer, maxLocals: Integer, code: Array[Byte], exceptionTable: Array[CodeException], attributeInfo: Array[Attribute]) extends Attribute
 case class CodeException(attributeNameIndex: Integer, attributeLength: Long, startPc: Integer, endPc: Integer, handlerPc: Integer, catchType: Integer) extends Attribute
 case class ConstantValue(attributeNameIndex: Integer, attributeLength: Long, constantValueIndex: Integer) extends Attribute
@@ -28,3 +27,4 @@ case class RuntimeVisibleParameterAnnotations(attributeNameIndex: Integer, attri
 case class RuntimeInvisibleParameterAnnotations(attributeNameIndex: Integer, attributeLength: Long, parameterAnnotiations: Array[Pair[Integer, Array[Annotation]]]) extends Attribute
 
 case class BootstrapMethods(attributeNameIndex: Integer, attributeLength: Long, bootstrapArguments: Array[BootstrapMethod])
+*/

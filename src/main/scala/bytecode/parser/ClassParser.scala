@@ -10,6 +10,7 @@ case class FailResult(reason: String)
 class ClassParser(inputStream: InputStream) {
   val reader: UnsignedBinaryReader = new UnsignedBinaryReader(new DataInputStream(inputStream))
   val constantParser = new ConstantParser(reader)
+  val attributeParser = new AttributeParser(reader)
  
   def parseMagicNumber(): Boolean = {
     val magicNumber = reader.int()
@@ -23,15 +24,17 @@ class ClassParser(inputStream: InputStream) {
       Left(FailResult("Magic number did not match."))
     else
       Right(new ClassFile(
-          reader.short(),  //minor_version
-          reader.short(),//  //major_version
-          constantParser.parse(),
-          parseAccessFlags(),
-          reader.short(), //this_class
-          reader.short(), //super_class,
+          reader.short,  //minor_version
+          reader.short,//  //major_version
+          constantParser.parse,
+          parseAccessFlags,
+          reader.short, //this_class
+          reader.short, //super_class,
           for(x <- 0 until reader.short - 1)
-            yield reader.short()
-          ))
+            yield reader.short,
+          parseFields            
+          )
+      )
       
   }
   
@@ -49,6 +52,20 @@ class ClassParser(inputStream: InputStream) {
     
         return for(flag <- flagSet if (flags & flag._1) != 0)          
              yield flag._2            
+  }
+  
+  def parseFields: Seq[Field] = {
+    for(i <- 0 until reader.short - 1)
+      yield parseField;
+  }
+  
+  def parseField: Field = {
+    new Field(parseAccessFlags,
+        reader.short,
+        reader.short,
+        attributeParser.parseAttributes
+        )
+    
   }
   
 }

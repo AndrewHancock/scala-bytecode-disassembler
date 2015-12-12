@@ -20,6 +20,8 @@ object ClassFilePrinter {
     println("super_class: " + classFile.superClass)
     println("Interfaces: " + classFile.interfaces)
     println("Fields: " + classFile.fields)
+    println("Methods: " + classFile.methods)
+    println("Attributes: " + classFile.attributes)
   }
   
   def printConstant(constant: CpInfo) = constant match{
@@ -40,9 +42,15 @@ object ClassFilePrinter {
       
   }
   
+  def printMethods(methods: Seq[Method]) = {
+    println("")
+  }
+  
   def printAttributes(attributes: Seq[Attribute]) = {
     println(attributes)
   }
+  
+  
   
   
 }

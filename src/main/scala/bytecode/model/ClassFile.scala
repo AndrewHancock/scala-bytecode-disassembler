@@ -9,7 +9,9 @@ case class ClassFile(
     thisClass: Int,
     superClass: Int,
     interfaces: Seq[Int],
-    fields: Seq[Field]
+    fields: Seq[Field],
+    methods: Seq[Method],
+    attributes: Seq[Attribute]
     ){
     
 }

@@ -1,12 +1,12 @@
 package bytecode.model
 
-class Attribute(attributeNameIndex: Integer, attributeLength: Long) {
-
+abstract class Attribute() {
+  def attributeNameIndex: Integer
+  def attributeLength: Long
 }
-/*
 case class Code(attributeNameIndex: Integer, attributeLength: Long, maxStack: Integer, maxLocals: Integer, code: Array[Byte], exceptionTable: Array[CodeException], attributeInfo: Array[Attribute]) extends Attribute
 case class CodeException(attributeNameIndex: Integer, attributeLength: Long, startPc: Integer, endPc: Integer, handlerPc: Integer, catchType: Integer) extends Attribute
-case class ConstantValue(attributeNameIndex: Integer, attributeLength: Long, constantValueIndex: Integer) extends Attribute
+/*case class ConstantValue(attributeNameIndex: Integer, attributeLength: Long, constantValueIndex: Integer) extends Attribute
 case class StackMapTable(attributeNameIndex: Integer, attributeLength: Long, numberOfEntries: Integer, entries: Array[StackMapFrame]) extends Attribute
 case class Exception(attributeNameIndex: Integer, attributeLength: Long, exceptionIndexTable: Array[Integer]) extends Attribute
 case class InnerClass(innerClassInfoIndex: Integer, outerClassInfoIndex: Integer, innerNameIndex: Integer, innerclassAccessFlags: Integer)
@@ -25,6 +25,5 @@ case class RuntimeVisibileAnnotations(attributeNameIndex: Integer, attributeLeng
 case class RuntimeInisibileAnnotations(attributeNameIndex: Integer, attributeLength: Long, annotations: Array[Annotation]) extends Attribute
 case class RuntimeVisibleParameterAnnotations(attributeNameIndex: Integer, attributeLength: Long, parameterAnnotations: Array[Pair[Integer, Array[Annotation]]]) extends Attribute
 case class RuntimeInvisibleParameterAnnotations(attributeNameIndex: Integer, attributeLength: Long, parameterAnnotiations: Array[Pair[Integer, Array[Annotation]]]) extends Attribute
-
 case class BootstrapMethods(attributeNameIndex: Integer, attributeLength: Long, bootstrapArguments: Array[BootstrapMethod])
 */

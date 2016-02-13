@@ -1,6 +1,6 @@
 package bytecode.model
 
-abstract class CpInfo
+abstract class CpInfo 
 case class ClassInfo(nameIndex: Integer) extends CpInfo 
 case class DoubleInfo(highBytes: Integer, lowBytes: Integer) extends CpInfo
 case class FieldRefInfo(classIndex: Integer, nameAndTypeIndex: Integer) extends CpInfo

@@ -9,5 +9,6 @@ object AccessFlags {
   object Abstract extends AccessFlag
   object Synthetic extends AccessFlag
   object Annotation extends AccessFlag
-  object Enum extends AccessFlag
+  object Enum extends AccessFlag 
+    
 }

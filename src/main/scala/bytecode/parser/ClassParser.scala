@@ -35,9 +35,9 @@ class ClassParser(inputStream: InputStream) {
         reader.short, //super_class,
         for (x <- 0 until reader.short - 1)
           yield reader.short,
-        parseFields,
-        parseMethods,
-        attributeParser.parseAttributes))
+        parseFields(constantPool),
+        parseMethods(constantPool),
+        null))
     }
 
   }
@@ -58,19 +58,19 @@ class ClassParser(inputStream: InputStream) {
       yield flag._2
   }
 
-  def parseFields: Seq[Field] = {
+  def parseFields(constantPool: Seq[CpInfo]): Seq[Field] = {
     for (i <- 0 until reader.short)
       yield new Field(parseAccessFlags,
       reader.short,
       reader.short,
-      attributeParser.parseAttributes)
+      attributeParser.parseAttributes(constantPool))
   }
 
-  def parseMethods: Seq[Method] = {
+  def parseMethods(constantPool: Seq[CpInfo]): Seq[Method] = {
     for (i <- 0 until reader.short)
       yield new Method(parseAccessFlags,
       reader.short,
       reader.short,
-      attributeParser.parseAttributes)
+      attributeParser.parseAttributes(constantPool))
   }
 }

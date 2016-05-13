@@ -4,7 +4,7 @@ abstract class Attribute() {
   def attributeNameIndex: Integer
   def attributeLength: Long
 }
-case class Code(attributeNameIndex: Integer, attributeLength: Long, maxStack: Integer, maxLocals: Integer, code: Array[Byte], exceptionTable: Array[CodeException], attributeInfo: Array[Attribute]) extends Attribute
+case class Code(attributeNameIndex: Integer, attributeLength: Long, maxStack: Integer, maxLocals: Integer, code: Seq[Op], exceptionTable: Array[CodeException], attributeInfo: Array[Attribute]) extends Attribute
 case class CodeException(attributeNameIndex: Integer, attributeLength: Long, startPc: Integer, endPc: Integer, handlerPc: Integer, catchType: Integer) extends Attribute
 /*case class ConstantValue(attributeNameIndex: Integer, attributeLength: Long, constantValueIndex: Integer) extends Attribute
 case class StackMapTable(attributeNameIndex: Integer, attributeLength: Long, numberOfEntries: Integer, entries: Array[StackMapFrame]) extends Attribute
